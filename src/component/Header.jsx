@@ -3,11 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import '../style/header.scss'
 
 const Header = () => {
+    const location = useLocation();
+
+    
     return (
         <div className='header'>
             <div className="inner">
                 <h1 className="logo">
-                <Link to="/">POPOL</Link>
+                    <Link to="/">Portfolio</Link>
                 </h1>
 
                 <nav className="gnb">
@@ -19,9 +22,6 @@ const Header = () => {
                     </Link>
                     <Link className={location.pathname === "/projects" ? "active" : ""} to="/projects">
                         Projects
-                    </Link>
-                    <Link className={location.pathname === "/contact" ? "active" : ""} to="/contact">
-                        Contact
                     </Link>
                 </nav>
             </div>

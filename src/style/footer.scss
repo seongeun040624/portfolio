@@ -1,10 +1,11 @@
+@use './variables' as *;
+
 .footer {
-  background: #111;
-  color: #ddd;
-  padding: 50px 24px;
+  background: $sub1;
+  color: $sub;
+  padding: 50px 240px;
 
   .inner {
-    max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -12,11 +13,12 @@
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #fff;
+    color: $sub;
   }
 
   p {
     font-size: 14px;
     line-height: 1.8;
+    color: $sub;
   }
 }

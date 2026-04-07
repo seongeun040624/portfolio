@@ -1,3 +1,5 @@
+@use './style/variables' as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -10,14 +12,12 @@ html, body, #root {
 }
 
 body {
-  font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  background: #f8f6f2;
-  color: #222;
+  font-family: "Pretendard", sans-serif;
+  letter-spacing: .7px;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
 }
 
 ul, li {
@@ -26,7 +26,7 @@ ul, li {
 
 img {
   display: block;
-  max-width: 100%;
+  object-fit: cover;
 }
 
 button {
@@ -35,13 +35,3 @@ button {
   cursor: pointer;
 }
 
-.wrap {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  flex: 1;
-  padding-top: 80px;
-}
