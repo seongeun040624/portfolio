@@ -1,0 +1,50 @@
+@import "./about.scss";
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.projects-card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #ddd1c5, #f3eee8);
+  }
+
+  .text {
+    padding: 24px;
+
+    span {
+      font-size: 13px;
+      color: #8b7d6b;
+    }
+
+    h3 {
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.7;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,88 @@
+.projectPre {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px;
+
+  .title-wrap {
+    margin-bottom: 40px;
+
+    .small-title {
+      font-size: 14px;
+      color: #8b7d6b;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 42px;
+    }
+  }
+
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    display: block;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      transform: translateY(-6px);
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #d9d1c7, #f1ebe4);
+    }
+
+    .text {
+      padding: 24px;
+
+      span {
+        font-size: 13px;
+        color: #8b7d6b;
+      }
+
+      h4 {
+        font-size: 24px;
+        margin: 10px 0 12px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .view-more-wrap {
+    margin-top: 36px;
+    text-align: center;
+  }
+
+  .view-more {
+    display: inline-block;
+    padding: 14px 24px;
+    border: 1px solid #222;
+    border-radius: 999px;
+  }
+}
+
+@media (max-width: 900px) {
+  .projectPre {
+    .project-list {
+      grid-template-columns: 1fr;
+    }
+
+    .title-wrap h3 {
+      font-size: 32px;
+    }
+  }
+}
