@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Skill from './Skill'
 import '../../style/aboutPre.scss';
 
 const AboutPre = () => {
@@ -156,66 +157,71 @@ const AboutPre = () => {
   };
 
   return (
-    <section className="aboutPre" ref={sectionRef}>
-      <div className="aboutSticky">
-        <div className="inner">
-          <div className="aboutTop">
-            <div className={`reveal-text delay1 ${isVisible ? 'show' : ''}`}>
-              <span className="text">About Me</span>
-              <span className="cover primary"></span>
-              <span className="cover secondary"></span>
-            </div>
-          </div>
-
-          <div className="intro">
-            <div className="introLeft">
-              {introData.map((item, index) => (
-                <div
-                  className={`introCard ${activeIndex === index ? 'active' : ''}`}
-                  key={item.id}
-                  onClick={() => handleCardClick(index, item.targetId)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      handleCardClick(index, item.targetId);
-                    }
-                  }}
-                >
-                  <div className="introNum">{item.id}</div>
-
-                  <div className="introTxt">
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-
-                    <div className="keyword">
-                      {item.keywords.map((keyword, idx) => (
-                        <span key={idx}>{keyword}</span>
+    <>
+        <section className="aboutPre" ref={sectionRef}>
+          <div className="aboutSticky">
+            <div className="inner">
+              <div className="aboutTop">
+                <div className={`reveal-text delay1 ${isVisible ? 'show' : ''}`}>
+                  <span className="text">About Me</span>
+                  <span className="cover primary"></span>
+                  <span className="cover secondary"></span>
+                </div>
+              </div>
+    
+              <div className="intro">
+                <div className="introLeft">
+                  {introData.map((item, index) => (
+                    <div
+                      className={`introCard ${activeIndex === index ? 'active' : ''}`}
+                      key={item.id}
+                      onClick={() => handleCardClick(index, item.targetId)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleCardClick(index, item.targetId);
+                        }
+                      }}
+                    >
+                      <div className="introNum">{item.id}</div>
+    
+                      <div className="introTxt">
+                        <h4>{item.title}</h4>
+                        <p>{item.desc}</p>
+    
+                        <div className="keyword">
+                          {item.keywords.map((keyword, idx) => (
+                            <span key={idx}>{keyword}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+    
+                <div className="introRight">
+                  <div className="introImg">
+                    <div
+                      className="introImgTrack"
+                      style={{ transform: `translateY(-${activeIndex * 100}%)` }}
+                    >
+                      {introData.map((item) => (
+                        <div className="introImgSlide" key={item.id}>
+                          <img src={item.image} alt={item.title} />
+                        </div>
                       ))}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="introRight">
-              <div className="introImg">
-                <div
-                  className="introImgTrack"
-                  style={{ transform: `translateY(-${activeIndex * 100}%)` }}
-                >
-                  {introData.map((item) => (
-                    <div className="introImgSlide" key={item.id}>
-                      <img src={item.image} alt={item.title} />
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+        <section id="skill">
+            <Skill />
+        </section>
+    </>
   );
 };
 

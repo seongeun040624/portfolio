@@ -17,9 +17,7 @@ const Home = () => {
         <AboutPre />
       </section>
 
-      <section id="skill">
-        <Skill />
-      </section>
+      
 
       <section id="projects">
         <ProjectPre />
