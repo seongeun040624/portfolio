@@ -5,7 +5,9 @@ import '../../style/projectPre.scss'
 const ProjectPre = () => {
     return (
         <div className='proPre'>
-            projectPerview
+            <div className='inner'>
+                <p>Project Preview</p>
+            </div>
         </div>
     );
 };

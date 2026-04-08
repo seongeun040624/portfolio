@@ -1,35 +1,75 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
-import Contact from "./pages/Contact";
 
-import './App.scss'
+import "./App.scss";
 
+function ScrollHandler() {
+  const location = useLocation();
 
-function App() {
+  useEffect(() => {
+    const headerOffset = 100;
 
-  return (
-    <BrowserRouter>
-        <div className="wrap">
-            <Header />
-            <main className="container">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/projects/:id" element={<ProjectDetail />} />
-                    <Route path="/contact" element={<Contact />} />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
-    </BrowserRouter>
-  )
+    if (location.pathname === "/" && location.hash) {
+      const id = location.hash.replace("#", "");
+
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          const top =
+            element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top,
+            behavior: "smooth",
+          });
+        }
+      }, 50);
+
+      return () => clearTimeout(timer);
+    }
+
+    if (!location.hash) {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, [location]);
+
+  return null;
 }
 
-export default App
+function AppLayout() {
+  return (
+    <div className="wrap">
+      <ScrollHandler />
+      <Header />
+
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
+  );
+}
+
+export default App;

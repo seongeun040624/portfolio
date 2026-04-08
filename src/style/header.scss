@@ -24,25 +24,83 @@
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
-    
-    a{
-        color: $point;
+
+    a {
+      color: $point;
     }
   }
 
   .gnb {
     display: flex;
+    align-items: center;
     gap: 25px;
 
-    a {
+    a,
+    button {
       font-size: 14px;
-      transition: .3s;
+      transition: 0.3s;
       color: $sky;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
     }
 
-    a.active {
+    a.active,
+    button.active {
       font-weight: 600;
       color: $point;
+    }
+
+    .gnb-item {
+      position: relative;
+    }
+
+    .has-depth {
+      display: flex;
+      align-items: center;
+      height: 80px;
+    }
+
+    .depth2 {
+      position: absolute;
+      top: calc(100% - 6px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      min-width: 170px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.25s;
+
+      button {
+        width: 100%;
+        text-align: left;
+        color: $sky;
+        font-size: 13px;
+        line-height: 1.4;
+
+        &:hover {
+          color: $point;
+        }
+      }
+    }
+
+    .has-depth.open {
+      .depth2 {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
     }
   }
 }

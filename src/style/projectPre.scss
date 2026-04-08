@@ -1,0 +1,23 @@
+@use './variables' as *;
+
+.proPre{
+    width: 100%;
+    height: 70vh;
+    background: $main;
+    padding: 80px 0 50px;
+
+    .inner{
+        width: 100%;
+        padding: 0 240px;
+
+        p{
+            margin: 0 auto;
+            text-align: center;
+            color: $sub2;
+            width: 150px;
+            border: 1px solid $sub2;
+            border-radius: 8px;
+            padding: 3px 5px;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+
+    {
+      id: '02',
+      title: 'Skills',
+      desc: 'React, JavaScript, HTML, SCSS 기반으로 화면을 구현하고 Figma를 활용해 UI 구조를 정리합니다.',
+      keywords: ['#Frontend', '#DesignTools', '#SCSS'],
+      image: '/img/hero2.jpg',
+    },

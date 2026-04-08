@@ -1,0 +1,33 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+{/* <Swiper
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={1000}
+                loop={true}
+                grabCursor={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Autoplay, EffectFade, Pagination]}
+                className="mySwiper heroSwip"
+            >
+                <SwiperSlide>
+                    <img src="/img/hero1.jpg" alt="heroImg1" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src="/img/hero2.jpg" alt="heroImg2" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src="/img/hero3.jpg" alt="heroImg3" />
+                </SwiperSlide>
+            </Swiper> */}
