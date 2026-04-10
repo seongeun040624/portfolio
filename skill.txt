@@ -1,0 +1,433 @@
+import React, { useEffect, useRef, useState } from 'react';
+import '../../style/skill.scss';
+
+import { FaHtml5 } from "react-icons/fa";
+import { FaCss } from "react-icons/fa6";
+import { FaReact } from "react-icons/fa6";
+import { IoLogoJavascript } from "react-icons/io5";
+
+
+import { FaFigma } from "react-icons/fa6";
+import { TbBrandAdobePhotoshop } from "react-icons/tb";
+import { TbBrandAdobeIllustrator } from "react-icons/tb";
+import { TbBrandAdobeIndesign } from "react-icons/tb";
+import { TbBrandAdobePremier } from "react-icons/tb";
+import { TbBrandAdobeAfterEffect } from "react-icons/tb";
+
+import { FaGithub } from "react-icons/fa6";
+import { VscVscodeInsiders } from "react-icons/vsc";
+import { IoLogoVercel } from "react-icons/io5"; // 바탕필요
+import { SiFirebase } from "react-icons/si";
+import { Midjourney } from '@lobehub/icons';
+import { Runway } from '@lobehub/icons';
+
+const skillData = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'HTML', percent: 90, icon:<FaHtml5 />  },
+      { name: 'CSS | SCSS', percent: 90, icon:<FaCss /> },
+      { name: 'JavaScript', percent: 80, icon:<IoLogoJavascript /> },
+      { name: 'React', percent: 80, icon:<FaReact /> },
+    ],
+  },
+  {
+    category: 'Design',
+    items: [
+      { name: 'Figma', percent: 90, icon:<FaFigma /> },
+      { name: 'Photoshop', percent: 90, icon:<TbBrandAdobePhotoshop /> },
+      { name: 'Illustrator', percent: 90, icon:<TbBrandAdobeIllustrator /> },
+      { name: 'Indesign', percent: 80, icon:<TbBrandAdobeIndesign /> },
+      { name: 'Premiere Pro', percent: 70, icon:<TbBrandAdobePremier /> },
+      { name: 'After Effects', percent: 70, icon:<TbBrandAdobeAfterEffect /> },
+    ],
+  },
+  {
+    category: 'Tools',
+    items: [
+        { name: 'VS Code', percent: 90, icon:<VscVscodeInsiders /> },
+        { name: 'GitHub', percent: 80, icon:<FaGithub /> },
+        { name: 'Vercel', percent: 75, icon:<IoLogoVercel /> },
+        { name: 'Firebase', percent: 70, icon:<SiFirebase /> },
+        { name: 'MidJourney', percent: 70, icon:<Midjourney size={36} /> },
+        { name: 'Runway', percent: 70, icon:<Runway size={30} /> },
+    ],
+  },
+];
+
+const Skill = () => {
+  const skillRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+
+    if (skillRef.current) observer.observe(skillRef.current);
+
+    return () => {
+      if (skillRef.current) observer.unobserve(skillRef.current);
+    };
+  }, []);
+
+  return (
+    <section className="skill" ref={skillRef}>
+      <div className="inner">
+        <div className="skill-head">
+          <div className={`reveal-text delay1 ${isVisible ? 'show' : ''}`}>
+            <span className="text">skills</span>
+            <span className="cover primary"></span>
+            <span className="cover secondary"></span>
+          </div>
+        </div>
+
+        <div className="skill-columns">
+          {skillData.map((group, groupIndex) => (
+            <div
+              className={`skill-column ${isVisible ? 'show' : ''}`}
+              key={group.category}
+              style={{ transitionDelay: `${groupIndex * 0.15}s` }}
+            >
+              <h3>{group.category}</h3>
+
+              <div className="skill-list">
+                {group.items.map((item, itemIndex) => (
+                  <div
+                    className={`skill-item ${isVisible ? 'show' : ''}`}
+                    key={item.name}
+                    style={{
+                      transitionDelay: `${0.2 + groupIndex * 0.12 + itemIndex * 0.06}s`,
+                    }}
+                  >
+                    <div className="skill-top">
+                      <div className="skill-icon">{item.icon}</div>
+
+                      <div className="skill-info">
+                        <div className="skill-row">
+                          <span className="skill-name">{item.name}</span>
+                          <span className="skill-percent">{item.percent}%</span>
+                        </div>
+
+                        <div className="skill-bar">
+                          <div
+                            className="skill-fill"
+                            style={{
+                              width: isVisible ? `${item.percent}%` : '0%',
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Skill;
+
+
+
+
+-----------------------------------------
+
+
+
+
+@use './variables' as *;
+
+.skill {
+  width: 100%;
+  padding: 140px 0;
+  background: $sub;
+
+  .inner {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 240px;
+  }
+
+  .skill-head {
+    margin-bottom: 56px;
+  }
+
+  .reveal-text {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    .text {
+        display: block;
+      color: $point;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(24px);
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease 0.45s, transform 0.6s ease 0.45s;
+    }
+
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .cover.primary {
+      background: $point;
+    }
+
+    .cover.secondary {
+      background: #fff;
+      z-index: 3;
+    }
+
+    &.show {
+      .text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .cover.primary {
+        animation: skillRevealPrimary 1s ease forwards;
+      }
+
+      .cover.secondary {
+        animation: skillRevealSecondary 1s ease 0.18s forwards;
+      }
+    }
+
+    &.delay1.show {
+      .cover.primary {
+        animation-delay: 0.05s;
+      }
+
+      .cover.secondary {
+        animation-delay: 0.23s;
+      }
+    }
+  }
+
+  .skill-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 56px;
+    align-items: start;
+  }
+
+  .skill-column {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: all 0.8s ease;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h3 {
+      margin-bottom: 34px;
+      font-size: 20px;
+      font-weight: 700;
+      color: $sub1;
+      letter-spacing: 0.03em;
+    }
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .skill-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .skill-top {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .skill-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    //background: #d2d2d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $sub2;
+    font-size: 30px;
+    flex-shrink: 0;
+  }
+
+  .skill-info {
+    min-width: 0;
+  }
+
+  .skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .skill-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: $sub1;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-percent {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    flex-shrink: 0;
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba($main, .3);
+    overflow: hidden;
+    border-radius: 999px;
+  }
+
+  .skill-fill {
+    width: 0;
+    height: 100%;
+    background: $point;
+    border-radius: 999px;
+    transition: width 1.2s ease;
+  }
+}
+
+@keyframes skillRevealPrimary {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0;
+  }
+}
+
+@keyframes skillRevealSecondary {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .skill {
+    .inner {
+      padding: 0 60px;
+    }
+
+    .skill-columns {
+      gap: 36px;
+    }
+
+    .skill-column {
+      h3 {
+        font-size: 28px;
+      }
+    }
+
+    .reveal-text {
+      .text {
+        font-size: 36px;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .skill {
+    padding: 100px 0;
+
+    .skill-columns {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .skill-column {
+      h3 {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .skill {
+    .inner {
+      padding: 0 24px;
+    }
+
+    .skill-head {
+      margin-bottom: 40px;
+    }
+
+    .reveal-text {
+      .text {
+        font-size: 30px;
+      }
+    }
+
+    .skill-top {
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+    }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+    }
+
+    .skill-name {
+      font-size: 16px;
+    }
+  }
+}
