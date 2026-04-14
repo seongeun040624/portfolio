@@ -5,7 +5,6 @@ import Footer from "./component/Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
-
 import "./App.scss";
 
 function ScrollHandler() {

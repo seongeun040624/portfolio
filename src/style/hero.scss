@@ -1,48 +1,70 @@
 @use './variables' as *;
 
-.hero{
+.hero {
     position: relative;
     width: 100%;
     height: 90vh;
     overflow: hidden;
 
-    .hero-title-wrap{
+    .hero-title-wrap {
         position: absolute;
         top: 50%;
-        left: 12.5%;
+        left: 200px;
         transform: translateY(-50%);
         z-index: 5;
         color: #fff;
+        width: min(900px, 75%);
     }
 
-    .reveal-text{
+    .hero-main {
+        margin-bottom: 48px;
+    }
+
+    .hero-desc {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .reveal-text {
         position: relative;
         overflow: hidden;
         width: fit-content;
-        margin-bottom: 10px;
     }
 
-    .reveal-text .text{
+    .reveal-text .text {
         display: block;
-        font-size: clamp(24px, 5vw, 52px);
-        font-weight: 700;
-        line-height: 1.1;
         opacity: 0;
         transform: translateY(24px);
         animation: textReveal .8s ease forwards;
         position: relative;
         z-index: 1;
-        letter-spacing: 1.5px;
-    }
-    .reveal-text .text2{
-        font-size: clamp(14px, 5vw, 24px);
-        font-weight: 500;
-        opacity: 0;
-        margin-top: 10px;
-        letter-spacing: 1px;
     }
 
-    .reveal-text .cover{
+    .reveal-text .text.title {
+        font-size: clamp(36px, 5vw, 72px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: 1.2px;
+    }
+
+    .reveal-text .text.desc-ko {
+        font-size: clamp(20px, 2vw, 28px);
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: -0.2px;
+    }
+
+    .reveal-text .text.desc-en {
+        font-size: clamp(14px, 1.2vw, 18px);
+        font-weight: 400;
+        line-height: 1.6;
+        letter-spacing: 0.4px;
+        margin-top: 18px;
+        color: rgba(255, 255, 255, .88);
+    }
+
+    .reveal-text .cover {
         position: absolute;
         top: 0;
         left: 0;
@@ -51,97 +73,149 @@
         z-index: 2;
     }
 
-    .reveal-text .cover.primary{
+    .reveal-text .cover.primary {
         background: $point;
         animation: coverPrimary 1.1s ease forwards;
     }
 
-    .reveal-text .cover.secondary{
+    .reveal-text .cover.secondary {
         background: #fff;
         animation: coverSecondary 1.1s ease forwards;
     }
 
-    .delay1 .text{ animation-delay: .55s; }
-    .delay1 .cover.primary{ animation-delay: 0s; }
-    .delay1 .cover.secondary{ animation-delay: .22s; }
+    // 타이틀만 기존 커버 애니메이션 유지
+    .delay1 .text {
+        animation-delay: .55s;
+    }
 
-    .delay2 .text{ animation-delay: .95s; }
-    .delay2 .cover.primary{ animation-delay: .4s; }
-    .delay2 .cover.secondary{ animation-delay: .62s; }
+    .delay1 .cover.primary {
+        animation-delay: 0s;
+    }
 
-    .delay3 .text{ animation-delay: 1.35s; }
-    .delay3 .cover.primary{ animation-delay: .8s; }
-    .delay3 .cover.secondary{ animation-delay: 1.02s; }
+    .delay1 .cover.secondary {
+        animation-delay: .22s;
+    }
 
-    .heroSwip{
+    .delay2 .text {
+        animation-delay: .95s;
+    }
+
+    .delay2 .cover.primary {
+        animation-delay: .4s;
+    }
+
+    .delay2 .cover.secondary {
+        animation-delay: .62s;
+    }
+
+    // 설명문은 디졸브 형태로만 등장
+    .fade-text .text {
+        transform: none;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    .fade-text .cover {
+        display: none;
+    }
+
+    .delay3 .text {
+        animation-delay: 1.2s;
+    }
+
+    .delay4 .text {
+        animation-delay: 1.55s;
+    }
+
+    .delay5 .text {
+        animation-delay: 1.95s;
+    }
+
+    .heroSwip {
         width: 100%;
         height: 100%;
         position: relative;
 
-        img{
+        img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .bg{
+
+        .bg {
             width: 100%;
             height: 100%;
             display: block;
             position: absolute;
-            left: 0; top: 0;
+            left: 0;
+            top: 0;
             z-index: 1;
             background: $sub1;
-            opacity: .6;
+            opacity: .4;
         }
 
-        .swiper-pagination-bullet{
+        .swiper-pagination-bullet {
             background: $sub2;
         }
 
-        .swiper-pagination-bullet-active{
+        .swiper-pagination-bullet-active {
             background: $point;
         }
     }
 }
 
-@keyframes coverPrimary{
-    0%{
+@keyframes coverPrimary {
+    0% {
         left: 0;
         width: 0%;
     }
-    50%{
+
+    50% {
         left: 0;
         width: 100%;
     }
-    100%{
+
+    100% {
         left: 100%;
         width: 0%;
     }
 }
 
-@keyframes coverSecondary{
-    0%{
+@keyframes coverSecondary {
+    0% {
         left: 0;
         width: 0%;
     }
-    50%{
+
+    50% {
         left: 0;
         width: 100%;
     }
-    100%{
+
+    100% {
         left: 100%;
         width: 0%;
     }
 }
 
-@keyframes textReveal{
-    0%{
+@keyframes textReveal {
+    0% {
         opacity: 0;
         transform: translateY(24px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

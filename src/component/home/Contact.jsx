@@ -1,4 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+
+import { IoIosMail } from "react-icons/io";
+import { IoIosCall } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
+import { RiNotionFill } from "react-icons/ri";
+
 import '../../style/contact.scss';
 
 const Contact = () => {
@@ -36,14 +42,14 @@ const Contact = () => {
         <div className={`contactWrap ${isVisible ? 'show' : ''}`}>
           <div className="contactCol left">
             <div className="contactItem">
-              <div className="iconBox"></div>
+              <div className="iconBox"><IoIosCall /></div>
               <div className="infoBox">
                 <p className="value">010 - 3176 - 5736</p>
               </div>
             </div>
 
             <div className="contactItem">
-              <div className="iconBox"></div>
+              <div className="iconBox"><IoIosMail /></div>
               <div className="infoBox">
                 <a href="mailto:jse040624@naver.com" className="value">
                   jse040624@naver.com
@@ -54,7 +60,7 @@ const Contact = () => {
 
           <div className="contactCol right">
             <div className="contactItem">
-              <div className="iconBox"></div>
+              <div className="iconBox"><FaGithub /></div>
               <div className="infoBox">
                 <a
                   href="https://github.com/seongeun040624"
@@ -68,7 +74,7 @@ const Contact = () => {
             </div>
 
             <div className="contactItem">
-              <div className="iconBox"></div>
+              <div className="iconBox"><RiNotionFill /></div>
               <div className="infoBox">
                 <a
                   href="https://www.notion.so/Portfolio-33a0b6904f8c8005b722d43543228559"

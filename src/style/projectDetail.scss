@@ -1,0 +1,365 @@
+@use './variables' as *;
+
+.projectDetail {
+  width: 100%;
+  background: #000;
+  color: #fff;
+
+  .inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 72px;
+  }
+
+  .detailHero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .heroOverlay {
+      position: absolute;
+      left: 72px;
+      bottom: 48px;
+      z-index: 2;
+
+      h1 {
+        font-size: clamp(72px, 10vw, 160px);
+        line-height: 0.9;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+    }
+  }
+
+  .detailIntro {
+    padding: 90px 0 80px;
+
+    .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .titleBox {
+      width: 200px;
+      height: 50px;
+      background: #e9e9e9;
+      margin-bottom: 48px;
+    }
+
+    .infoList {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 36px;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      p,
+      a {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #fff;
+      }
+
+      a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+
+    .toolWrap {
+      margin-bottom: 32px;
+
+      .toolTitle {
+        display: block;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 14px;
+      }
+
+      .toolList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .toolItem {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+
+        i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+        }
+
+        span {
+          line-height: 1;
+        }
+      }
+    }
+
+    .summary {
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .introRight {
+      padding-top: 30px;
+    }
+
+    .textBox {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 18px;
+      margin-bottom: 32px;
+
+      h2,
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.82);
+        white-space: pre-line;
+      }
+    }
+  }
+
+  .detailGallery {
+    padding: 10px 0 120px;
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .galleryRow {
+      width: 100%;
+      display: grid;
+      gap: 12px;
+    }
+
+    .imgBox {
+      width: 100%;
+      background: #e9e9e9;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .galleryRow.full {
+      grid-template-columns: 1fr;
+
+      .imgBox {
+        height: 560px;
+      }
+    }
+
+    .galleryRow.half {
+      grid-template-columns: 1fr 1fr;
+
+      .imgBox {
+        height: 320px;
+      }
+    }
+
+    .galleryRow.sidebar {
+      grid-template-columns: 240px 1fr;
+
+      .sideThumbs {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .imgBox.small {
+        height: 148px;
+      }
+
+      .imgBox.large {
+        height: 468px;
+      }
+    }
+
+    .galleryRow.split {
+      grid-template-columns: 2.1fr 1fr;
+
+      .imgBox.wide,
+      .imgBox.narrow {
+        height: 500px;
+      }
+    }
+  }
+
+  &.not-found {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .inner {
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .projectDetail {
+    .inner {
+      padding: 0 32px;
+    }
+
+    .detailHero {
+      height: 72vh;
+      min-height: 520px;
+
+      .heroOverlay {
+        left: 32px;
+        bottom: 32px;
+      }
+    }
+
+    .detailIntro {
+      .inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .introRight {
+        padding-top: 0;
+      }
+    }
+
+    .detailGallery {
+      .galleryRow.full .imgBox {
+        height: 420px;
+      }
+
+      .galleryRow.half .imgBox {
+        height: 240px;
+      }
+
+      .galleryRow.sidebar {
+        grid-template-columns: 180px 1fr;
+
+        .imgBox.small {
+          height: 116px;
+        }
+
+        .imgBox.large {
+          height: 372px;
+        }
+      }
+
+      .galleryRow.split .imgBox.wide,
+      .galleryRow.split .imgBox.narrow {
+        height: 360px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .projectDetail {
+    .inner {
+      padding: 0 20px;
+    }
+
+    .detailHero {
+      height: 60vh;
+      min-height: 420px;
+
+      .heroOverlay {
+        left: 20px;
+        bottom: 20px;
+      }
+    }
+
+    .detailIntro {
+      padding: 60px 0;
+
+      .titleBox {
+        width: 160px;
+        height: 42px;
+        margin-bottom: 36px;
+      }
+    }
+
+    .detailGallery {
+      .galleryRow.half,
+      .galleryRow.sidebar,
+      .galleryRow.split {
+        grid-template-columns: 1fr;
+      }
+
+      .galleryRow.full .imgBox,
+      .galleryRow.half .imgBox,
+      .galleryRow.sidebar .imgBox.large,
+      .galleryRow.split .imgBox.wide,
+      .galleryRow.split .imgBox.narrow {
+        height: 260px;
+      }
+
+      .galleryRow.sidebar {
+        .sideThumbs {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(3, 180px);
+        }
+
+        .imgBox.small {
+          height: 180px;
+        }
+      }
+    }
+  }
+}

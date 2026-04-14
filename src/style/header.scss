@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(27, 27, 27, 0.2);
+  background: rgba($sub, 0.2);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   z-index: 1000;
@@ -14,7 +14,7 @@
   .inner {
     height: 100%;
     margin: 0 auto;
-    padding: 0 240px;
+    padding: 0 200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,7 +26,7 @@
     text-transform: uppercase;
 
     a {
-      color: $point;
+      color: $main;
     }
   }
 
@@ -50,7 +50,7 @@
     a.active,
     button.active {
       font-weight: 600;
-      color: $point;
+      color: $main;
     }
 
     .gnb-item {
