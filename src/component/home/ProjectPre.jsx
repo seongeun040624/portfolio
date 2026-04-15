@@ -35,7 +35,7 @@ const projectData = [
     desc: `ÉCLAT는 보이지 않는 빛의 향을 향으로 풀어내는 브랜드입니다. 일상 속에서 빛나는 감각적인 경험을 선사합니다.`,
     site: 'eclat-t.vercel.app',
     image: '/img/eclat.png',
-    detailLink: '/project/eclat',
+    detailLink: '/projects/eclat',
   },
 
   {
@@ -59,7 +59,7 @@ const projectData = [
     desc: `날씨와 음악을 연결해 사용자에게 분위기 기반 경험을 제공하는 인터랙티브 웹 프로젝트입니다.`,
     site: 'mood-scape-umber.vercel.app',
     image: '/img/mood.jpg',
-    detailLink: '/project/moodscape',
+    detailLink: '/projects/moodscape',
   },
 
   {
@@ -80,7 +80,7 @@ const projectData = [
     desc: `TMDB 기반으로 제작한 영화 사이트입니다. 콘텐츠 탐색과 API 활용 중심으로 구성한 개인 프로젝트입니다.`,
     site: 'seongeun040624.github.io/TMDB_Movies/',
     image: '/img/movie-site.png',
-    detailLink: '/project/movie-site',
+    detailLink: '/projects/movie-site',
   },
 
   {
@@ -102,7 +102,7 @@ const projectData = [
     desc: `API를 활용해 레시피 정보를 보기 쉽게 구성하고 카테고리별 탐색이 가능하도록 만든 개인 웹 프로젝트입니다.`,
     site: 'cooks-murex.vercel.app',
     image: '/img/recipe.png',
-    detailLink: '/project/recipe',
+    detailLink: '/projects/recipe',
   },
 
   {
@@ -125,7 +125,7 @@ const projectData = [
     desc: `API를 활용해 위치와 지역 정보를 올리고 firebase를 활용해 실제 로그인이 가능한 사이트를 제작했습니다.`,
     site: 'github.com/seongeun040624/myTrip',
     image: '/img/mytrip.png',
-    detailLink: '/project/trip',
+    detailLink: '/projects/trip',
   },
 
   {
@@ -145,7 +145,7 @@ const projectData = [
     desc: `html을 사용한 클론코딩 사이트로 메인페이지 비주얼 중심 사이트를 카피했습니다.`,
     site: 'seongeun040624.github.io/hoxtonHotel/',
     image: '/img/hotel.png',
-    detailLink: '/project/hotel',
+    detailLink: '/projects/hotel',
   },
   {
     id: 'bluebottle',
@@ -164,7 +164,7 @@ const projectData = [
     desc: `html을 사용한 클론코딩 사이트로 메인페이지 비주얼 중심 사이트를 카피했습니다.`,
     site: 'seongeun040624.github.io/blueBottle/',
     image: '/img/bluebottle.png',
-    detailLink: '/project/bluebottle',
+    detailLink: '/projects/bluebottle',
   },
   {
     id: 'climate',
@@ -183,7 +183,7 @@ const projectData = [
     desc: `html을 사용한 클론코딩 사이트로 메인페이지 비주얼 중심 사이트를 카피했습니다.`,
     site: 'seongeun040624.github.io/project2/',
     image: '/img/climate.png',
-    detailLink: '/project/climate',
+    detailLink: '/projects/climate',
   },
   {
     id: 'rustylake',
@@ -201,7 +201,7 @@ const projectData = [
     desc: `Figma를 중점으로 활용한 마이크로 사이트로, 게임 홍보와 유저 유입을 위해 베타 버전의 게임을 체험할 수 있습니다.`,
     site: 'www.figma.com/proto/BgbXe1kWKhTqIhhjWE6a0E/2024_2-2-%EB%A9%80%ED%8B%B0%EB%AF%B8%EB%94%94%EC%96%B4?node-id=0-1&t=e4LHt2RumLYhKhjN-1',
     image: '/img/rustylake.png',
-    detailLink: '/project/rustylake',
+    detailLink: '/projects/rustylake',
   },
 
 ];

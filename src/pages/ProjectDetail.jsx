@@ -1,28 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  FaReact,
-  FaGithubSquare,
-  FaFigma,
-  FaCss3Alt,
-} from 'react-icons/fa';
-//import { SiGithub, SiVercel, SiAdobephotoshop } from 'react-icons/si';
-//import { IoLogoJavascript } from 'react-icons/io5';
-//import { TbApi } from 'react-icons/tb';
-
 import { projectData } from '../data/projectData';
 import '../style/projectDetail.scss';
-
-const iconMap = {
-  react: <FaReact />,
-  scss: <FaCss3Alt />,
-  //javascript: <IoLogoJavascript />,
-  //github: <FaGithubSquare />,
- // vercel: <SiVercel />,
-  //photoshop: <SiAdobephotoshop />,
-  //figma: <FaFigma />,
-  //api: <TbApi />,
-};
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -88,13 +67,11 @@ const ProjectDetail = () => {
 
             <div className="toolBox">
               <strong>Tools :</strong>
-
-              <div className="toolList">
+              <div className="toolList textOnly">
                 {project.tools.map((tool, index) => (
-                  <div className="toolItem" key={`${tool.name}-${index}`}>
-                    <i>{iconMap[tool.icon] || null}</i>
-                    <span>{tool.name}</span>
-                  </div>
+                  <span className="toolItem" key={`${tool.name}-${index}`}>
+                    {tool.name}
+                  </span>
                 ))}
               </div>
             </div>
@@ -124,7 +101,7 @@ const ProjectDetail = () => {
                 <div className="galleryRow full" key={sectionIndex}>
                   {section.images.map((img, imgIndex) => (
                     <div className="imgBox" key={imgIndex}>
-                      <img src={img.src} alt={img.alt} />
+                      <img src={img.src} alt={img.alt || `${project.title}-${imgIndex}`} />
                     </div>
                   ))}
                 </div>
@@ -136,7 +113,7 @@ const ProjectDetail = () => {
                 <div className="galleryRow half" key={sectionIndex}>
                   {section.images.map((img, imgIndex) => (
                     <div className="imgBox" key={imgIndex}>
-                      <img src={img.src} alt={img.alt} />
+                      <img src={img.src} alt={img.alt || `${project.title}-${imgIndex}`} />
                     </div>
                   ))}
                 </div>
@@ -149,13 +126,16 @@ const ProjectDetail = () => {
                   <div className="sideColumn">
                     {section.images.slice(0, 3).map((img, imgIndex) => (
                       <div className="imgBox small" key={imgIndex}>
-                        <img src={img.src} alt={img.alt} />
+                        <img src={img.src} alt={img.alt || `${project.title}-small-${imgIndex}`} />
                       </div>
                     ))}
                   </div>
 
                   <div className="imgBox large">
-                    <img src={section.images[3]?.src} alt={section.images[3]?.alt} />
+                    <img
+                      src={section.images[3]?.src}
+                      alt={section.images[3]?.alt || `${project.title}-large`}
+                    />
                   </div>
                 </div>
               );
@@ -165,11 +145,17 @@ const ProjectDetail = () => {
               return (
                 <div className="galleryRow split" key={sectionIndex}>
                   <div className="imgBox wide">
-                    <img src={section.images[0]?.src} alt={section.images[0]?.alt} />
+                    <img
+                      src={section.images[0]?.src}
+                      alt={section.images[0]?.alt || `${project.title}-wide`}
+                    />
                   </div>
 
                   <div className="imgBox narrow">
-                    <img src={section.images[1]?.src} alt={section.images[1]?.alt} />
+                    <img
+                      src={section.images[1]?.src}
+                      alt={section.images[1]?.alt || `${project.title}-narrow`}
+                    />
                   </div>
                 </div>
               );
